@@ -43,36 +43,34 @@ The Setup Wizard creates the recommended pagetree and it will add all configurat
 
 To create a new blog setup, follow these steps:
 
-1. Click on the blog module in the backend
-2. Click on the "SetupWizard" tab
-3. Click on the "Setup a new blog" button
+Step 1. On the far left menu, clic on Setup in the Blog section, like shown below.
 
-.. figure:: ../Images/Backend/setup_wizard_1.png
+.. image:: ../Images/Backend/blog_setup.png
 
-   Create a new blog setup structure
+Step 2. In the SetupWizard, clic on the blue Setup a new blog button.
 
-4. Enter a title for the blog setup
+.. image:: ../Images/Backend/setupwizard.png
 
-5. Click on the "Setup" button, to create the blog setup.
+Step 3. Provide a name for the new blog and clic on Setup.
 
-.. figure:: ../Images/Backend/setup_wizard_2.png
+.. image:: ../Images/Backend/title_of_blog.png
 
-   Modal with setup options
+If the success message appears, the setup is done. Go to your page tree (maybe reload the tree) and you will see the generated page structure.
 
-6. If the success message appears, the setup is done. Go to your page tree (maybe reload the tree) and you will see the generated page structure.
+.. image:: ../Images/Backend/page_tree.png
 
-.. figure:: ../Images/Backend/setup_wizard_3.png
+The Setup Wizard creates a standalone instance with the following page structure for you:
 
-   The generated page structure
+* Rootpage (hidden by default, contains the TypoScript and PageTS-Config)
+* Data (a folder to hold categories, authors and tags, but also blog posts are possible)
+* Category (this page is used to show blog posts, related to single category, or a category overview)
+* Tag (this page is used to show blog posts, related to single tag, or a tag overview)
+* Archive (this page is the archive, it lists all blog posts by given date (month and year, or year only)
+* First blog post (yes, a first blog post, as an example)
 
-The Setup Wizard creates the following pages for you:
+The Setup Wizard does also take care of all your configuration needs. I fills in the constants, inserts the static template and the Page TSconfig too.
 
-- Rootpage (hidden by default, contains the TypoScript and PageTS-Config)
-- > Data (a folder to hold categories, authors and tags, but also blog posts are possible)
-- > Category (this page is used to show blog posts, related to single category, or a category overview)
-- > Tag (this page is used to show blog posts, related to single tag, or a tag overview)
-- > Archive (this page is the archive, it lists all blog posts by given date (month and year, or year only)
-- > First blog post (yes, a first blog post, as an example)
+The Setup Wizard performs a fully configured standalone instance of the Blog extension. If you already have an existenig site, you might dislike the result of having an additional and unplanned root page. In that case you should read about the manual setup in the next section.
 
 
 Setup without Wizard
@@ -220,7 +218,7 @@ This plugin is new. It allows to configure how many of the latest news shall be 
 
 Header and Footer
 """""""""""""""""
-These two plugins are also new. They are meant to be used solely inside a post and if you apply these plugins in different context, you will get an error message in the frontend. All meta data is now displayed with either of the two plugins or through a combination of both.
+These two plugins are also new. They are meant to be used solely inside a post and if you apply these plugins in a different context, you will get an error message in the frontend. All meta data is now displayed with either one of the two plugins or through a combination of both.
 
 
 Metadata
@@ -274,4 +272,4 @@ But you can also implement your own AvatarProvider:
 1. Create a class which implements the AvatarProviderInterface.
 2. Add your provider to the TCA field “avatar_provider” to make it selectable in the author record
 
-**Note:** Since v10 the proxying of gravatar loading is used which means that TYPO3 downloads the gravatar, stores it on the filesystem and delivers the image locally from typo3temp. This is a privacy related and useful if users didn't give their consent for fetching gravatars client side.
+**Note:** Since v10 the proxying of gravatar loading is used which means that TYPO3 downloads the gravatar, stores it on the filesystem and delivers the image locally from typo3temp. This is privacy related and useful if users didn't give their consent for fetching gravatars client side.
