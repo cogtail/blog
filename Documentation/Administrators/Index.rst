@@ -52,15 +52,14 @@ To create a new blog setup, follow these steps:
    Create a new blog setup structure
 
 4. Enter a title for the blog setup
-5. If the extension "blog_template" is installed, you can use the provided template by enabling the checkbox.
-   If the extension "blog_template" is **not** installed, you can install and use it by enabling the checkbox.
-6. Click on the "Setup" button, to create the blog setup.
+
+5. Click on the "Setup" button, to create the blog setup.
 
 .. figure:: ../Images/Backend/setup_wizard_2.png
 
    Modal with setup options
 
-7. If the success message appears, the setup is done. Go to your page tree (maybe reload the tree) and you will see the generated page structure.
+6. If the success message appears, the setup is done. Go to your page tree (maybe reload the tree) and you will see the generated page structure.
 
 .. figure:: ../Images/Backend/setup_wizard_3.png
 
@@ -112,11 +111,11 @@ To create a new blog setup, follow these steps:
 
 .. code-block:: ts
 
-   TCEFORM.pages.tags.PAGE_TSCONFIG_ID = 
-   TCEFORM.pages.authors.PAGE_TSCONFIG_ID = 
-   TCEFORM.pages.categories.PAGE_TSCONFIG_ID = 
+   TCEFORM.pages.tags.PAGE_TSCONFIG_ID =
+   TCEFORM.pages.authors.PAGE_TSCONFIG_ID =
+   TCEFORM.pages.categories.PAGE_TSCONFIG_ID =
 
-      
+
 Frontend Routing Setup
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -214,9 +213,19 @@ categories, tags and archive links.
    Sidebar of a blog
 
 
+Latest posts
+""""""""""""
+This plugin is new. It allows to configure how many of the latest news shall be displayed in a list with the same format as the list of posts plugin.
+
+
+Header and Footer
+"""""""""""""""""
+These two plugins are also new. They are meant to be used solely inside a post and if you apply these plugins in different context, you will get an error message in the frontend. All meta data is now displayed with either of the two plugins or through a combination of both.
+
+
 Metadata
 """"""""
-Displays post meta data, like date, tags, category...
+This plugin is the old way of dealing with metadata and is currently deprecated. You are recommended to use Header and/or Footer to display meta data, like date, tags and category. The metadata plugin wil be removed in the upcoming version of the Blog extension.
 
 
 Authors
@@ -251,14 +260,18 @@ Tags are blog specific records. Creating a new tag works in the same way as crea
 * Enter a title for the tag
 * Click "Save"
 
+Enable sharing
+--------------
+No implementation is provided by the blog extension itself. Of course you can still use an extension like the Shariff implementation for TYPO3 in your custom templates.
+
 
 AvatarProvider
 --------------
-
-The default AvatarProvider is the `GravatarProvider`, this means the avatar of an author is received from gravatar.com.
-The extension provides also an `ImageProvider` for local stored images.
+The default AvatarProvider is the GravatarProvider, this means the avatar of an author is received from gravatar.com. The extension provides also an ImageProvider for local stored images.
 
 But you can also implement your own AvatarProvider:
 
-1) Create a class which implements the `AvatarProviderInterface`.
-2) Add your provider to the TCA field "avatar_provider" to make it selectable in the author record
+1. Create a class which implements the AvatarProviderInterface.
+2. Add your provider to the TCA field “avatar_provider” to make it selectable in the author record
+
+**Note:** Since v10 the proxying of gravatar loading is used which means that TYPO3 downloads the gravatar, stores it on the filesystem and delivers the image locally from typo3temp. This is a privacy related and useful if users didn't give their consent for fetching gravatars client side.
